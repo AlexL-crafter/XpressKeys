@@ -20,7 +20,7 @@ You just have to match your specific software shortcuts for these actions with t
 
 Make sure you have [AutoHotkey](https://www.autohotkey.com/) installed for Windows.
 
-Download this repository, and run `xpresskeys.ahk`. Trigger the GUI by pressing the '+" on your keyboard's numpad (NumpadPlus).
+Download this repository, and run `xpresskeys.ahk`. Trigger the GUI by pressing the `+` on your keyboard's numpad (NumpadPlus).
 
 # Extras
 
@@ -32,7 +32,7 @@ The codes were developed from a QWERTY European Portuguese keyboard, so, if you 
 
 # Customization
 
-"xpresskeys_tooltips_uk.txt" -Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
+`xpresskeys_tooltips_uk.txt` - Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
 
 Just don't forget to change the line
 ```
@@ -40,7 +40,7 @@ Just don't forget to change the line
 ```
 in the script `xpresskeys.ahk`
 
-`xpresskeys_actions.txt` -Here you can change/add more button actions. The button id MUST match one created in the file `xpresskeys_buttons.txt`
+`xpresskeys_actions.txt` - Here you can change/add more button actions. The button id MUST match one created in the file `xpresskeys_buttons.txt`
 
 So, if you add another button with the id `btfoo`:
 ```
@@ -57,7 +57,7 @@ like this:
 NOTE: you will need three png images for the button, with up/over/down states, place them inside the "images" folder, and properly add their filenames to the command line.
 (in this case; `"bt_foo_up.png","bt_foo_on.png","bt_foo_dn.png"`)
 
-"xpresskeys_keyboard_vars.txt" file has all the codes used for the virtual keyboard.
+`xpresskeys_keyboard_vars.txt` - Has all the codes used for the virtual keyboard.
 
 # Changelog
 
