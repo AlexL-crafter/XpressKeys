@@ -1,6 +1,6 @@
-XpressKeys made by Alexandre Rodrigues Lopes
+# XpressKeys 
 
-http://alexcrafter.blogspot.com/
+Made by Alexandre Rodrigues Lopes http://alexcrafter.blogspot.com/
 
 ![screenshot](screenshot.png)
 
