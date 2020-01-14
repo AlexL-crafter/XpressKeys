@@ -1,25 +1,24 @@
 XpressKeys made by Alexandre Rodrigues Lopes
 http://alexcrafter.blogspot.com/
 version 2.0
------------------------------Intro-------------------------------------
+
+# Intro
+
 Hello mates!
 This autohotkey script creates a handy Gui with graphic buttons that simulate the most used actions in any art software.
 It was made with the purpose of reducing the need of a keyboard when working with digital tablets.
 Things like changing from brush to eraser, to fill bucket, drag and zoom, and so on, become much more faster and intuitive.
 ------------------------------------------------------------------
 You just have to match your specific software shortcuts for these actions with the hotkey commands sent by the gui.
-------------------------------------------------------------------
 
-------------------------------------------------------------------
-Extras:
-------------------------------------------------------------------
+# Extras:
+
 There's a button that activates a virtual Keyboard.
 It includes some compound keys, like accent and tilde effects on vowels, for latin languages.
 The codes were developed from a QWERTY European Portuguese keyboard, so, if you need different symbols, you'll have to use the "key history panel" of Autohotkey to get your correct key codes.
 
-------------------------------------------------------------------
-Files to manipulate:
-------------------------------------------------------------------
+# Files to manipulate:
+
 "xpresskeys_tooltips_uk.txt" -Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
 Just don't forget to change the line
 #Include xpresskeys_tooltips_uk.txt
