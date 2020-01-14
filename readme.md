@@ -4,6 +4,8 @@ http://alexcrafter.blogspot.com/
 
 version 2.0
 
+![screenshot](screenshot.png)
+
 # Intro
 
 Hello mates!
@@ -16,7 +18,13 @@ Things like changing from brush to eraser, to fill bucket, drag and zoom, and so
 
 You just have to match your specific software shortcuts for these actions with the hotkey commands sent by the gui.
 
-# Extras:
+# Install
+
+Make sure you have [AutoHotkey](https://www.autohotkey.com/) installed for Windows.
+
+Download this repository, and run `xpresskeys.ahk` from either version of `xpresskeys`. 
+
+# Extras
 
 There's a button that activates a virtual Keyboard.
 
@@ -24,7 +32,7 @@ It includes some compound keys, like accent and tilde effects on vowels, for lat
 
 The codes were developed from a QWERTY European Portuguese keyboard, so, if you need different symbols, you'll have to use the "key history panel" of Autohotkey to get your correct key codes.
 
-# Files to manipulate:
+# Customization
 
 "xpresskeys_tooltips_uk.txt" -Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
 
