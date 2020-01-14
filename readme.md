@@ -2,8 +2,6 @@ XpressKeys made by Alexandre Rodrigues Lopes
 
 http://alexcrafter.blogspot.com/
 
-version 2.0
-
 ![screenshot](screenshot.png)
 
 # Intro
@@ -22,7 +20,7 @@ You just have to match your specific software shortcuts for these actions with t
 
 Make sure you have [AutoHotkey](https://www.autohotkey.com/) installed for Windows.
 
-Download this repository, and run `xpresskeys.ahk` from either version of `xpresskeys`. 
+Download this repository, and run `xpresskeys.ahk`. Trigger the GUI by pressing the '+" on your keyboard's numpad (NumpadPlus).
 
 # Extras
 
@@ -60,6 +58,18 @@ NOTE: you will need three png images for the button, with up/over/down states, p
 (in this case; `"bt_foo_up.png","bt_foo_on.png","bt_foo_dn.png"`)
 
 "xpresskeys_keyboard_vars.txt" file has all the codes used for the virtual keyboard.
+
+# Changelog
+
+## version 2.0
+
+This version was modified to trigger the graphical Menu when pressing the Key "NumpadPlus".
+
+Some display tablets and Art software do not allow the assignment of "Capslock" key.
+
+Drag function was made to both the Main Gui and the Keyboard, for better visibility and functionality.
+
+Restoring mouse position after the Gui is hidden was removed.
 
 # 
 
