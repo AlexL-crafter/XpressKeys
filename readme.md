@@ -71,6 +71,10 @@ Drag function was made to both the Main Gui and the Keyboard, for better visibil
 
 Restoring mouse position after the Gui is hidden was removed.
 
+## version 1.0
+
+Initial release.
+
 # 
 
 Hope you like it.
