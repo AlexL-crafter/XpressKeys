@@ -1,0 +1,169 @@
+;AlexL@2019
+;XpressKeys made by Alexandre Rodrigues Lopes
+;http://alexcrafter.blogspot.com/
+;#################################################################################
+
+;#################################################################################
+;Creates Gui with all the buttons
+;#################################################################################
+Gui_maker(n){
+	;.......................................................................................
+	;gui colors,size, and position
+	gui_color:=000000	;Background Color
+	gui_tcolor:=000000	;Font Color
+	gui_w:=400			;width
+	gui_h:=400			;Height
+	global gui_w2:=gui_w*0.5
+	global gui_h2:=gui_h*0.5
+	gui_posy:= A_ScreenHeight-gui_h	;vertical position for the Gui
+	
+	Gui, %n%: -DPIScale
+	Gui, %n%:Color, %gui_color%
+	;.......................................................................................
+	
+	;.......................................................................................
+	;gui background
+	Gui, %n%:Add, Picture, +BackgroundTrans x0 y0 w400 h400 +0x4000000, images/background.png
+	;.......................................................................................
+	
+	;.......................................................................................
+	;graphic buttons
+	#Include xpresskeys_buttons.txt
+	;.......................................................................................
+	
+	;.......................................................................................
+	;gui visual style
+	;Gui, %n%:-Caption +ToolWindow +E0x20						;No title bar, No taskbar button, Transparent for clicks
+	Gui, %n%:-Caption +ToolWindow								;No title bar, No taskbar button
+	Gui, %n%:Show, xCenter y%gui_posy% W%gui_w% H%gui_h%		;Show Gui, so it can be manipulated
+	
+	WinGet xid, ID, A										;Get gui ID for Winset commands
+	Winset AlwaysOnTop,ON,ahk_id %xid%						;Keep it always on the top
+	
+	WinSet, Region, 0-0 W400 H400 E,ahk_id %xid%			;set the Gui Area to a circle
+	;WinSet, Transparent, 200, ahk_id %xid%					;Opaque
+	WinSet, TransColor, %gui_color% 200, ahk_id %xid%		;transparency color and opacity
+	
+	Gui, %n%:Hide
+	
+	;REGISTER MOUSE HOOKS
+	OnMessage(0x200, "MouseMove")
+	OnMessage(0x201, "MouseLDown")
+	OnMessage(0x202, "MouseLUp")
+	
+	Return xid
+}
+;Dud function used by all buttons. 
+DoNothing()
+{
+	Return
+}
+;#################################################################################
+
+;#################################################################################
+;manipulating the gui
+;#################################################################################
+;-------------------------------------------------------------------------
+;show Gui
+;-------------------------------------------------------------------------
+Gui_show(n){
+	
+	global gui_px				;the mouse x position before the gui is shown
+	global gui_py				;the mouse y position before the gui is shown
+	global gui_w2				;the gui width/2
+	global gui_h2				;the gui height/2
+	
+	;................................
+	;calculate the gui position relative to mouse
+	;the gui must stay inside the screen
+	px:=gui_px
+	py:=gui_py
+	npx:=px-gui_w2
+	npy:=py-gui_h2
+	
+	pxmax:=px+gui_w2
+	if(pxmax>A_ScreenWidth)
+	{
+		npx:=A_ScreenWidth-gui_w2*2
+	}
+	else if(npx<0)
+	{
+		npx:=0
+	}
+	pymax:=py+gui_h2
+	if(pymax>A_ScreenHeight)
+	{
+		npy:=A_ScreenHeight-gui_h2*2
+	}
+	else if(npy<0)
+	{
+		npy:=0
+	}
+	;................................
+	
+	;show the gui
+	;Gui, %n%:Show, x%npx% y%npy%
+	Gui, %n%:Show
+	
+	
+	return
+}
+;-------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------
+;hide Gui
+;-------------------------------------------------------------------------
+Gui_hideAll(){
+	
+	global gui_on								;boolean to know if gui is on/off
+	global guiKeyboard_on						;boolean to know if kyboard is on/off
+	
+	;set the gui trigger off
+	gui_on:=false
+	
+	;hide the gui
+	Gui_hide(2)
+	GuiKeyboard_hide(3)
+	
+	return
+}
+Gui_hide(n){
+	global gui_px				;the mouse x position before the gui is shown
+	global gui_py				;the mouse y position before the gui is shown
+	
+	;................................
+	;hide the gui
+	Gui, %n%:Hide
+	;................................
+	
+	;................................
+	;reset Capslock state, considering that the toggle key remains Capslock
+	;SetCapsLockState, Off
+	;................................
+	
+	;................................
+	;hide tooltips
+	Tooltip
+	;................................
+	
+	;................................
+	;reposition the mouse where it once was
+	;MouseMove, gui_px, gui_py, 10
+	;................................
+	
+	return
+}
+;-------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------
+;select the window whence (XD) the main Gui was called, so keys can be sent there
+;-------------------------------------------------------------------------
+Gui_focus(){
+
+	global xactive_ID
+	WinActivate, ahk_ID %xactive_ID%
+	
+	return
+}
+;-------------------------------------------------------------------------
+;#################################################################################

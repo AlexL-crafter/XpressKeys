@@ -1,0 +1,171 @@
+;AlexL@2019
+;XpressKeys made by Alexandre Rodrigues Lopes
+;http://alexcrafter.blogspot.com/
+;#################################################################################
+;array with all keyboard commands
+;################################################################
+;--------------------------------------------------------------
+;assign a global associative array for button tooltip access
+global KeyboardArr		;associative array that stores all buttons definitions
+global keyboard_mod		;stores the current mode -- lo: low caps, hi:high caps by capslock, hi1:high caps by shift, hilo:both high or low, sy:symbols
+
+;---------------------------------------
+;setup default keyboard mode
+keyboard_mod:="lo"
+;---------------------------------------
+
+;---------------------------------------
+;setup all buttons for the keyboard
+;---------------------------------------
+;keys format
+;keyid:[send code,pos x,pos y,width,height,label,group id,font size]
+KeyboardArr:=[]
+
+;........................................................................
+;static buttons
+KeyboardArr["keybtab"]		:= ["Tab",			19,		16,60,40,"Tab","st",14]
+KeyboardArr["keybcaps"]		:= ["CapsLock",		19,		58,60,40,"Caps","st",14]
+KeyboardArr["keybshift"]	:= ["Shift",		19,		100,60,40,"Shift","st",14]
+KeyboardArr["keybsymbol"]	:= ["Symbol",		19,		142,60,40,"Sym","st",14]
+KeyboardArr["keybpgup"]		:= ["PgUp",			19,		184,60,40,"PgUp","st",12]
+KeyboardArr["keybpgdn"]		:= ["PgDn",			82,		184,60,40,"PgDn","st",12]
+KeyboardArr["keybesc"]		:= ["Escape",		145,	184,60,40,"Esc","st",14]
+KeyboardArr["keybspace"]	:= ["Space",		209,	184,164,40,"Space","st",14]
+KeyboardArr["keybins"]		:= ["Insert",		376,	184,60,40,"Ins","st",14]
+KeyboardArr["keybhome"]		:= ["Home",			439,	184,60,40,"Home","st",12]
+KeyboardArr["keybend"]		:= ["End",			502,	184,60,40,"End","st",14]
+KeyboardArr["keybback"]		:= ["Backspace",	502,	16,60,40,"Back","st",14]
+KeyboardArr["keybdel"]		:= ["Delete",		502,	58,60,40,"Del","st",14]
+KeyboardArr["keybenter"]	:= ["Enter",		502,	100,60,82,"Enter","st",14]
+;........................................................................
+;........................................................................
+;hilow caps
+KeyboardArr["keyb1"]		:= ["1",			81,			16,40,40,"1","hilo",20]
+KeyboardArr["keyb2"]		:= ["2",			124,		16,40,40,"2","hilo",20]
+KeyboardArr["keyb3"]		:= ["3",			166,		16,40,40,"3","hilo",20]
+KeyboardArr["keyb4"]		:= ["4",			208,		16,40,40,"4","hilo",20]
+KeyboardArr["keyb5"]		:= ["5",			250,		16,40,40,"5","hilo",20]
+KeyboardArr["keyb6"]		:= ["6",			292,		16,40,40,"6","hilo",20]
+KeyboardArr["keyb7"]		:= ["7",			334,		16,40,40,"7","hilo",20]
+KeyboardArr["keyb8"]		:= ["8",			376,		16,40,40,"8","hilo",20]
+KeyboardArr["keyb9"]		:= ["9",			418,		16,40,40,"9","hilo",20]
+KeyboardArr["keyb0"]		:= ["0",			460,		16,40,40,"0","hilo",20]
+;........................................................................
+;........................................................................
+;low caps
+KeyboardArr["keybq"]		:= ["q",			81,			58,40,40,"q","lo",20]
+KeyboardArr["keybw"]		:= ["w",			124,		58,40,40,"w","lo",20]
+KeyboardArr["keybe"]		:= ["e",			166,		58,40,40,"e","lo",20]
+KeyboardArr["keybr"]		:= ["r",			208,		58,40,40,"r","lo",20]
+KeyboardArr["keybt"]		:= ["t",			250,		58,40,40,"t","lo",20]
+KeyboardArr["keyby"]		:= ["y",			292,		58,40,40,"y","lo",20]
+KeyboardArr["keybu"]		:= ["u",			334,		58,40,40,"u","lo",20]
+KeyboardArr["keybi"]		:= ["i",			376,		58,40,40,"i","lo",20]
+KeyboardArr["keybo"]		:= ["o",			418,		58,40,40,"o","lo",20]
+KeyboardArr["keybp"]		:= ["p",			460,		58,40,40,"p","lo",20]
+
+KeyboardArr["keyba"]		:= ["a",			81,			100,40,40,"a","lo",20]
+KeyboardArr["keybs"]		:= ["s",			124,		100,40,40,"s","lo",20]
+KeyboardArr["keybd"]		:= ["d",			166,		100,40,40,"d","lo",20]
+KeyboardArr["keybf"]		:= ["f",			208,		100,40,40,"f","lo",20]
+KeyboardArr["keybg"]		:= ["g",			250,		100,40,40,"g","lo",20]
+KeyboardArr["keybh"]		:= ["h",			292,		100,40,40,"h","lo",20]
+KeyboardArr["keybj"]		:= ["j",			334,		100,40,40,"j","lo",20]
+KeyboardArr["keybk"]		:= ["k",			376,		100,40,40,"k","lo",20]
+KeyboardArr["keybl"]		:= ["l",			418,		100,40,40,"l","lo",20]
+KeyboardArr["keybcc"]		:= ["ç",			460,		100,40,40,"ç","lo",20]
+
+KeyboardArr["keybz"]		:= ["z",			81,			142,40,40,"z","lo",20]
+KeyboardArr["keybx"]		:= ["x",			124,		142,40,40,"x","lo",20]
+KeyboardArr["keybc"]		:= ["c",			166,		142,40,40,"c","lo",20]
+KeyboardArr["keybv"]		:= ["v",			208,		142,40,40,"v","lo",20]
+KeyboardArr["keybb"]		:= ["b",			250,		142,40,40,"b","lo",20]
+KeyboardArr["keybn"]		:= ["n",			292,		142,40,40,"n","lo",20]
+KeyboardArr["keybm"]		:=["m",				334,		142,40,40,"m","lo",20]
+KeyboardArr["keybcomma"]	:=["U+002C",		376,		142,40,40,",","lo",20]
+KeyboardArr["keybdot"]		:=["U+002E",		418,		142,40,40,".","lo",20]
+KeyboardArr["keybminus"]	:=["U+2212",		460,		142,40,40,"-","lo",20]
+;........................................................................
+;........................................................................
+;high caps
+KeyboardArr["keybhq"]		:= ["Q",			81,			58,40,40,"Q","hi",20]
+KeyboardArr["keybhw"]		:= ["W",			124,		58,40,40,"W","hi",20]
+KeyboardArr["keybhe"]		:= ["E",			166,		58,40,40,"E","hi",20]
+KeyboardArr["keybhr"]		:= ["R",			208,		58,40,40,"R","hi",20]
+KeyboardArr["keybht"]		:= ["T",			250,		58,40,40,"T","hi",20]
+KeyboardArr["keybhy"]		:= ["Y",			292,		58,40,40,"Y","hi",20]
+KeyboardArr["keybhu"]		:= ["U",			334,		58,40,40,"U","hi",20]
+KeyboardArr["keybhi"]		:= ["I",			376,		58,40,40,"I","hi",20]
+KeyboardArr["keybho"]		:= ["O",			418,		58,40,40,"O","hi",20]
+KeyboardArr["keybhp"]		:= ["P",			460,		58,40,40,"P","hi",20]
+
+KeyboardArr["keybha"]		:= ["A",			81,			100,40,40,"A","hi",20]
+KeyboardArr["keybhs"]		:= ["S",			124,		100,40,40,"S","hi",20]
+KeyboardArr["keybhd"]		:= ["D",			166,		100,40,40,"D","hi",20]
+KeyboardArr["keybhf"]		:= ["F",			208,		100,40,40,"F","hi",20]
+KeyboardArr["keybhg"]		:= ["G",			250,		100,40,40,"G","hi",20]
+KeyboardArr["keybhh"]		:= ["H",			292,		100,40,40,"H","hi",20]
+KeyboardArr["keybhj"]		:= ["J",			334,		100,40,40,"J","hi",20]
+KeyboardArr["keybhk"]		:= ["K",			376,		100,40,40,"K","hi",20]
+KeyboardArr["keybhl"]		:= ["L",			418,		100,40,40,"L","hi",20]
+KeyboardArr["keybhç"]		:= ["Ç",			460,		100,40,40,"Ç","hi",20]
+
+KeyboardArr["keybhz"]				:= ["Z",		81,		142,40,40,"Z","hi",20]
+KeyboardArr["keybhx"]				:= ["X",		124,	142,40,40,"X","hi",20]
+KeyboardArr["keybhc"]				:= ["C",		166,	142,40,40,"C","hi",20]
+KeyboardArr["keybhv"]				:= ["V",		208,	142,40,40,"V","hi",20]
+KeyboardArr["keybhb"]				:= ["B",		250,	142,40,40,"B","hi",20]
+KeyboardArr["keybhn"]				:= ["N",		292,	142,40,40,"N","hi",20]
+KeyboardArr["keybhm"]				:= ["M",		334,	142,40,40,"M","hi",20]
+KeyboardArr["keybsemicolon"]		:= ["U+003B",	376,	142,40,40,";","hi",20]
+KeyboardArr["keybcolon"]			:= ["U+003A",	418,	142,40,40,":","hi",20]
+KeyboardArr["keybunderscore"]		:= ["U+0332",	460,	142,40,40,"_","hi",20]
+;........................................................................
+;........................................................................
+;symbols
+KeyboardArr["keybexclamation"]			:= ["U+0021",		81,		16,40,40,Chr(0x0021),"sy",20]
+KeyboardArr["keybquote"]				:= ["U+0022",		124,	16,40,40,Chr(0x0022),"sy",20]
+KeyboardArr["keybcardinal"]				:= ["U+0023",		166,	16,40,40,Chr(0x0023),"sy",20]
+KeyboardArr["keybdollar"]				:= ["U+0024",		208,	16,40,40,Chr(0x0024),"sy",20]
+KeyboardArr["keybpcent"]				:= ["U+0025",		250,	16,40,40,Chr(0x0025),"sy",20]
+KeyboardArr["keybamper"]				:= ["U+0026",		292,	16,40,40,"&&","sy",20]
+KeyboardArr["keybsolidus"]				:= ["U+002F",		334,	16,40,40,Chr(0x002F),"sy",20]
+KeyboardArr["keyblparent"]				:= ["U+0028",		376,	16,40,40,Chr(0x0028),"sy",20]
+KeyboardArr["keybrparent"]				:= ["U+0029",		418,	16,40,40,Chr(0x0029),"sy",20]
+KeyboardArr["keybequal"]				:= ["U+003D",		460,	16,40,40,Chr(0x003D),"sy",20]
+
+KeyboardArr["keybrsolidus"]				:= ["U+005c",		81,		58,40,40,Chr(0x005C),"sy",20]
+KeyboardArr["keybvline"]				:= ["U+007c",		124,	58,40,40,Chr(0x007C),"sy",20]
+KeyboardArr["keybat"]					:= ["U+0040",		166,	58,40,40,Chr(0x0040),"sy",20]
+KeyboardArr["keybpound"]				:= ["U+00a3",		208,	58,40,40,Chr(0x00a3),"sy",20]
+KeyboardArr["keybsection"]				:= ["U+00a7",		250,	58,40,40,Chr(0x00a7),"sy",20]
+KeyboardArr["keybeuro"]					:= ["U+20ac",		292,	58,40,40,Chr(0x20ac),"sy",20]
+KeyboardArr["keyblcurly"]				:= ["U+007b",		334,	58,40,40,Chr(0x007b),"sy",20]
+KeyboardArr["keybrcurly"]				:= ["U+007d",		376,	58,40,40,Chr(0x007d),"sy",20]
+KeyboardArr["keyblsquare"]				:= ["U+005b",		418,	58,40,40,Chr(0x005b),"sy",20]
+KeyboardArr["keybrsquare"]				:= ["U+005d",		460,	58,40,40,Chr(0x005d),"sy",20]
+
+KeyboardArr["keybplus"]					:= ["U+002b",		81,		100,40,40,Chr(0x002b),"sy",20]
+KeyboardArr["keybminus2"]				:= ["U+2212",		124,	100,40,40,Chr(0x2212),"sy",20]
+KeyboardArr["keybasterisk"]				:= ["U+002a",		166,	100,40,40,Chr(0x002a),"sy",20]
+KeyboardArr["keybdiaresis"]				:= ["?vkBBsc01A",	208,	100,40,40,Chr(0x00a8),"sy",20]
+KeyboardArr["keybmord"]					:= ["U+00ba",		250,	100,40,40,Chr(0x00ba),"sy",20]
+KeyboardArr["keybfmord"]				:= ["U+00aa",		292,	100,40,40,Chr(0x00aa),"sy",20]
+KeyboardArr["keybtilde"]				:= ["vkBFsc02B",	334,	100,40,40,"~","sy",20]
+KeyboardArr["keybcircum"]				:= ["+vkBFsc02B",	376,	100,40,40,Chr(0x005e),"sy",20]
+KeyboardArr["keyblesser"]				:= ["U+003c",		418,	100,40,40,Chr(0x003c),"sy",20]
+KeyboardArr["keybgreater"]				:= ["U+003e",		460,	100,40,40,Chr(0x003e),"sy",20]
+
+KeyboardArr["keybldang"]				:= ["U+00ab",		81,		142,40,40,Chr(0x00ab),"sy",20]
+KeyboardArr["keybrdang"]				:= ["U+00bb",		124,	142,40,40,Chr(0x00bb),"sy",20]
+KeyboardArr["keybacute"]				:= ["vkBAsc01B",	166,	142,40,40,Chr(0x00b4),"sy",20]
+KeyboardArr["keybgrave"]				:= ["+vkBAsc01B",	208,	142,40,40,Chr(0x0060),"sy",20]
+KeyboardArr["keybapostrophe"]			:= ["U+0027",		250,	142,40,40,Chr(0x0027),"sy",20]
+KeyboardArr["keybquestion"]				:= ["U+003f",		292,	142,40,40,Chr(0x003f),"sy",20]
+KeyboardArr["keybcomma2"]				:= ["U+002c",		334,	142,40,40,Chr(0x002c),"sy",20]
+KeyboardArr["keybsemicolon2"]			:= ["U+003b",		376,	142,40,40,Chr(0x003b),"sy",20]
+KeyboardArr["keybdot2"]					:= ["U+002e",		418,	142,40,40,Chr(0x002e),"sy",20]
+KeyboardArr["keybcolon2"]				:= ["U+003a",		460,	142,40,40,Chr(0x003a),"sy",20]
+;........................................................................
+;---------------------------------------
+;################################################################

@@ -1,0 +1,70 @@
+;AlexL@2019
+;XpressKeys made by Alexandre Rodrigues Lopes
+;http://alexcrafter.blogspot.com/
+;########################################################
+;graphic buttons
+;########################################################
+	;-------------------------------------------------------------------------
+	;adds all the buttons for the main Gui
+	;format AddImgButton(Gui reference,pos x, pos y, width,height, Button Id,
+	;image source for up state, img src for hover state, img src for down state)
+	;-------------------------------------------------------------------------
+	;tools
+	AddImgButton(n,175,62,50,50,"btbrush","bt_brush_up.png","bt_brush_on.png","bt_brush_dn.png")
+	AddImgButton(n,122,75,50,50,"bteraser","bt_eraser_up.png","bt_eraser_on.png","bt_eraser_dn.png")
+	AddImgButton(n,83,113,50,50,"btedrop","bt_edrop_up.png","bt_edrop_on.png","bt_edrop_dn.png")
+	AddImgButton(n,228,75,50,50,"btfill","bt_fill_up.png","bt_fill_on.png","bt_fill_dn.png")
+	AddImgButton(n,267,113,50,50,"btselect","bt_select_up.png","bt_select_on.png","bt_select_dn.png")
+	
+	AddImgButton(n,228,12,50,50,"btbsizedn","bt_bsizedn_up.png","bt_bsizedn_on.png","bt_bsizedn_dn.png")
+	AddImgButton(n,275,37,50,50,"btbsizeup","bt_bsizeup_up.png","bt_bsizeup_on.png","bt_bsizeup_dn.png")
+	
+	AddImgButton(n,314,74,46,46,"btundo","bt_undo_up.png","bt_undo_on.png","bt_undo_dn.png")
+	AddImgButton(n,337,117,46,46,"btredo","bt_redo_up.png","bt_redo_on.png","bt_redo_dn.png")
+	;-------------------------------------------------------------------------
+	;-------------------------------------------------------------------------
+	;view
+	AddImgButton(n,123,12,50,50,"btzoomin","bt_zoomin_up.png","bt_zoomin_on.png","bt_zoomin_dn.png")
+	AddImgButton(n,75,37,50,50,"btzoomout","bt_zoomout_up.png","bt_zoomout_on.png","bt_zoomout_dn.png")
+	AddImgButton(n,175,4,50,50,"btgrab","bt_grab_up.png","bt_grab_on.png","bt_grab_dn.png")
+	;-------------------------------------------------------------------------
+	;-------------------------------------------------------------------------
+	;lady Nezumi
+	AddImgButton(n,175,346,50,50,"btnezuon","bt_nezuon_up.png","bt_nezuon_on.png","bt_nezuon_dn.png")
+	AddImgButton(n,121,337,50,50,"btnezupull","bt_nezupull_up.png","bt_nezupull_on.png","bt_nezupull_dn.png")
+	AddImgButton(n,72,311,50,50,"btnezuheavy","bt_nezuheavy_up.png","bt_nezuheavy_on.png","bt_nezuheavy_dn.png")
+	AddImgButton(n,34,272,50,50,"btnezulight","bt_nezulight_up.png","bt_nezulight_on.png","bt_nezulight_dn.png")
+	AddImgButton(n,229,337,50,50,"btnezuline","bt_nezuline_up.png","bt_nezuline_on.png","bt_nezuline_dn.png")
+	AddImgButton(n,278,311,50,50,"btnezulipse","bt_nezulipse_up.png","bt_nezulipse_on.png","bt_nezulipse_dn.png")
+	AddImgButton(n,315,272,50,50,"btnezurad","bt_nezurad_up.png","bt_nezurad_on.png","bt_nezurad_dn.png")
+	
+	AddImgButton(n,107,272,46,46,"btnezu1","bt_nezu1_up.png","bt_nezu1_on.png","bt_nezu1_dn.png")
+	AddImgButton(n,152,292,46,46,"btnezu2","bt_nezu2_up.png","bt_nezu2_on.png","bt_nezu2_dn.png")
+	AddImgButton(n,202,292,46,46,"btnezu3","bt_nezu3_up.png","bt_nezu3_on.png","bt_nezu3_dn.png")
+	AddImgButton(n,247,272,46,46,"btnezu4","bt_nezu4_up.png","bt_nezu4_on.png","bt_nezu4_dn.png")
+	;-------------------------------------------------------------------------
+	;-------------------------------------------------------------------------
+	;polygons
+	AddImgButton(n,177,127,46,46,"btpoly","bt_poly_up.png","bt_poly_on.png","bt_poly_dn.png")
+	AddImgButton(n,134,151,46,46,"btpolyadd","bt_polyadd_up.png","bt_polyadd_on.png","bt_polyadd_dn.png")
+	AddImgButton(n,132,199,46,46,"btpolyminus","bt_polyminus_up.png","bt_polyminus_on.png","bt_polyminus_dn.png")
+	AddImgButton(n,220,151,46,46,"btpolycurve","bt_polycurve_up.png","bt_polycurve_on.png","bt_polycurve_dn.png")
+	AddImgButton(n,222,199,46,46,"btpolynodes","bt_polynodes_up.png","bt_polynodes_on.png","bt_polynodes_dn.png")
+	;-------------------------------------------------------------------------
+	;-------------------------------------------------------------------------
+	;cursor
+	AddImgButton(n,311,167,42,32,"btkeyup","bt_keyup_up.png","bt_keyup_on.png","bt_keyup_dn.png")
+	AddImgButton(n,311,201,42,32,"btkeydown","bt_keydown_up.png","bt_keydown_on.png","bt_keydown_dn.png")
+	AddImgButton(n,277,179,32,42,"btkeyleft","bt_keyleft_up.png","bt_keyleft_on.png","bt_keyleft_dn.png")
+	AddImgButton(n,355,179,32,42,"btkeyright","bt_keyright_up.png","bt_keyright_on.png","bt_keyright_dn.png")
+	
+	AddImgButton(n,47,167,42,32,"btkeyup2","bt_keyup2_up.png","bt_keyup2_on.png","bt_keyup2_dn.png")
+	AddImgButton(n,47,201,42,32,"btkeydown2","bt_keydown2_up.png","bt_keydown2_on.png","bt_keydown2_dn.png")
+	AddImgButton(n,13,179,32,42,"btkeyleft2","bt_keyleft2_up.png","bt_keyleft2_on.png","bt_keyleft2_dn.png")
+	AddImgButton(n,91,179,32,42,"btkeyright2","bt_keyright2_up.png","bt_keyright2_on.png","bt_keyright2_dn.png")
+	;-------------------------------------------------------------------------
+	;-------------------------------------------------------------------------
+	;virtual keyboard
+	AddImgButton(n,16,117,46,46,"btkeyboard","bt_keyboard_up.png","bt_keyboard_on.png","bt_keyboard_dn.png")
+	;-------------------------------------------------------------------------
+;########################################################
