@@ -1,9 +1,13 @@
+#
 # XpressKeys 
 
-Made by Alexandre Rodrigues Lopes http://alexcrafter.blogspot.com/
+Made by Alexandre Rodrigues Lopes [http://alexcrafter.blogspot.com/](http://alexcrafter.blogspot.com/)
+
+version 3.0
 
 ![screenshot](screenshot.png)
 
+#
 # Intro
 
 Hello mates!
@@ -16,12 +20,14 @@ Things like changing from brush to eraser, to fill bucket, drag and zoom, and so
 
 You just have to match your specific software shortcuts for these actions with the hotkey commands sent by the gui.
 
+#
 # Install
 
 Make sure you have [AutoHotkey](https://www.autohotkey.com/) installed for Windows.
 
 Download this repository, and run `xpresskeys.ahk`. Trigger the GUI by pressing the `+` on your keyboard's numpad (NumpadPlus).
 
+#
 # Extras
 
 There's a button that activates a virtual Keyboard.
@@ -30,6 +36,9 @@ It includes some compound keys, like accent and tilde effects on vowels, for lat
 
 The codes were developed from a QWERTY European Portuguese keyboard, so, if you need different symbols, you'll have to use the "key history panel" of Autohotkey to get your correct key codes.
 
+The Xpress Typer was added - See `Changelog` for version 3.0
+
+#
 # Customization
 
 `xpresskeys_tooltips_uk.txt` - Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
@@ -59,7 +68,21 @@ NOTE: you will need three png images for the button, with up/over/down states, p
 
 `xpresskeys_keyboard_vars.txt` - Has all the codes used for the virtual keyboard.
 
+#
 # Changelog
+
+## version 3.0
+Some applications, as well as the windows explorer, will immediately close a text input when focus is lost. This makes using the express keyboard useless when trying to type text in there, or simple things like changing a file's name or editing a layer's name in photoshop.
+
+A new feature was introduced: the Xpress Typer!
+An input text box was added to the keyboard, and is activated by pressing the key `Typer`. When this input box is active, all keyboard keys divert their commands into it, instead of sending them to the target window.
+
+While the input box is active, if you go to the target window and open any text area, you just have to press `middle mouse button` to transfer the text from the Xpress input box into the text area you want to edit.
+
+NOTE: this method requires a pen with three buttons (one assigned to simulate middle mouse button), or a custom button in the display tablet that can be assigned to it.
+
+The middle mouse button was chosen because it's the least intrusive while working with art software. Most of the times, it is only used to drag the canvas around.
+
 
 ## version 2.0
 
@@ -75,6 +98,7 @@ Restoring mouse position after the Gui is hidden was removed.
 
 Initial release.
 
+#
 # 
 
 Hope you like it.
