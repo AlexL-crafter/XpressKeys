@@ -1,4 +1,4 @@
-;AlexL@2019
+;AlexL@200
 ;XpressKeys made by Alexandre Rodrigues Lopes
 ;http://alexcrafter.blogspot.com/
 ;#################################################################################
@@ -8,6 +8,15 @@
 ;assign a global associative array for button tooltip access
 global KeyboardArr		;associative array that stores all buttons definitions
 global keyboard_mod		;stores the current mode -- lo: low caps, hi:high caps by capslock, hi1:high caps by shift, hilo:both high or low, sy:symbols
+;--------------------------------------------------------------
+
+;--------------------------------------------------------------
+;global variables for Xpress Typer
+global XpressTyperOn	;Boolean that defines if the typer is active or not
+global XpressTyperTxt	;text to type
+XpressTyperOn:=false
+XpressTyperTxt:=""
+;--------------------------------------------------------------
 
 ;---------------------------------------
 ;setup default keyboard mode
@@ -23,20 +32,24 @@ KeyboardArr:=[]
 
 ;........................................................................
 ;static buttons
-KeyboardArr["keybtab"]		:= ["Tab",			19,		16,60,40,"Tab","st",14]
-KeyboardArr["keybcaps"]		:= ["CapsLock",		19,		58,60,40,"Caps","st",14]
-KeyboardArr["keybshift"]	:= ["Shift",		19,		100,60,40,"Shift","st",14]
-KeyboardArr["keybsymbol"]	:= ["Symbol",		19,		142,60,40,"Sym","st",14]
-KeyboardArr["keybpgup"]		:= ["PgUp",			19,		184,60,40,"PgUp","st",12]
-KeyboardArr["keybpgdn"]		:= ["PgDn",			82,		184,60,40,"PgDn","st",12]
-KeyboardArr["keybesc"]		:= ["Escape",		145,	184,60,40,"Esc","st",14]
-KeyboardArr["keybspace"]	:= ["Space",		209,	184,164,40,"Space","st",14]
-KeyboardArr["keybins"]		:= ["Insert",		376,	184,60,40,"Ins","st",14]
-KeyboardArr["keybhome"]		:= ["Home",			439,	184,60,40,"Home","st",12]
-KeyboardArr["keybend"]		:= ["End",			502,	184,60,40,"End","st",14]
-KeyboardArr["keybback"]		:= ["Backspace",	502,	16,60,40,"Back","st",14]
-KeyboardArr["keybdel"]		:= ["Delete",		502,	58,60,40,"Del","st",14]
-KeyboardArr["keybenter"]	:= ["Enter",		502,	100,60,82,"Enter","st",14]
+KeyboardArr["keybesc"]		:= ["Escape",		19,		16,		60,40,"Esc","st",14]
+KeyboardArr["keybtab"]		:= ["Tab",			19,		58,		60,40,"Tab","st",14]
+KeyboardArr["keybcaps"]		:= ["CapsLock",		19,		100,	60,40,"Caps","st",14]
+KeyboardArr["keybshift"]	:= ["Shift",		19,		142,	60,40,"Shift","st",14]
+KeyboardArr["keybsymbol"]	:= ["Symbol",		19,		184,	60,40,"Sym","st",14]
+KeyboardArr["keybpgdn"]		:= ["PgDn",			82,		184,	60,40,"PgDn","st",12]
+KeyboardArr["keybpgup"]		:= ["PgUp",			145,	184,	60,40,"PgUp","st",12]
+
+KeyboardArr["keybspace"]	:= ["Space",		209,	184,	164,40,"Space","st",14]
+
+KeyboardArr["keybhome"]		:= ["Home",			376,	184,	60,40,"Home","st",12]
+KeyboardArr["keybend"]		:= ["End",			439,	184,	60,40,"End","st",14]
+
+KeyboardArr["keybback"]		:= ["Backspace",	502,	16,		60,40,"Back","st",14]
+KeyboardArr["keybdel"]		:= ["Delete",		502,	58,		60,40,"Del","st",14]
+KeyboardArr["keybenter"]	:= ["Enter",		502,	100,	60,82,"Enter","st",14]
+
+KeyboardArr["keybtyper"]	:= ["Typer",		502,	184,	60,40,"Typer","st",12]
 ;........................................................................
 ;........................................................................
 ;hilow caps

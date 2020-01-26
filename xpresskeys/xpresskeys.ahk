@@ -1,7 +1,7 @@
-;AlexL@2019
+;AlexL@2020
 ;XpressKeys made by Alexandre Rodrigues Lopes
 ;http://alexcrafter.blogspot.com/
-;version 2.0
+;version 3.0
 ;########################################################
 ; Global variables
 ;########################################################
@@ -121,30 +121,16 @@ return
 return
 ;---------------------------------------------------------------------------------
 ;---------------------------------------------------------------------------------
-;checks if the mouse is clicked outside the gui
-;this will automatically hide the gui
-/*
-~LButton::
+;middle mouse button is used to trigger Xpress Typer text.
+;can be used with pens with 3 buttons
+~MButton Up::
+	global XpressTyperOn
 	
-	global gui_id
-	global guiKeyboard_id
-	
-	ControlGet, MainGuiVisible, Visible,,,ahk_id %gui_id%				;get boolean of the gui visibility
-	MouseGetPos,,, winId												;get window ID where the mouse clicked
-	
-	;if the gui is visible, test if the click was inside the gui
-	if (MainGuiVisible)
+	if(XpressTyperOn)
 	{
-		if (winId != gui_id &&  winId != guiKeyboard_id)
-		{
-			clicked outside the gui and virtual keyboard also
-			Gui_hide(2)													;hide the gui
-			GuiKeyboard_hide(3)											;hide the keyboard too
-		}
+		GuiKeyboardTyper_inject()
 	}
-	
 return
-*/
 ;---------------------------------------------------------------------------------
 
 ;########################################################

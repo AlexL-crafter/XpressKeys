@@ -1,4 +1,4 @@
-;AlexL@2019
+;AlexL@2020
 ;XpressKeys made by Alexandre Rodrigues Lopes
 ;http://alexcrafter.blogspot.com/
 ;#################################################################################
@@ -10,7 +10,7 @@ GuiKeyboard_maker(n){
 	;gui colors,size, and position
 	gui_color:=000000	;Background Color
 	gui_tcolor:=ffffff	;Font Color
-	gui_w:=580			;width
+	gui_w:=700			;width
 	gui_h:=240			;Height
 	gui_posy:= A_ScreenHeight-gui_h	;vertical position for the Gui
 	Gui, %n%:Color, %gui_color%
@@ -21,6 +21,11 @@ GuiKeyboard_maker(n){
 	;.......................................................................................
 	;gui background
 	Gui, %n%:Add, Picture, +BackgroundTrans x0 y0 w%gui_w% h%gui_h% +0x4000000, images/keyboard1.png
+	;.......................................................................................
+	
+	;.......................................................................................
+	;Text box for xpress typer
+	GuiKeyboard_addTyperText(n,565,16,120,208,"typertxt","Keyboard Express Typer Text...")
 	;.......................................................................................
 	
 	;.......................................................................................
@@ -89,6 +94,25 @@ GuiKeyboard_addBt(n,px,py,w,h,xid,lbl,fsize){
 	;.......................................................................................
 }
 ;--------------------------------------------------------------------
+
+;--------------------------------------------------------------------
+;creates typer text
+;--------------------------------------------------------------------
+GuiKeyboard_addTyperText(n,px,py,w,h,xid,lbl){
+
+	;.......................................................................................
+	global	;for use with the DoNothing g.label function
+	;.......................................................................................
+	
+	;.......................................................................................
+	;add typer text input box
+	Gui, %n%:Font, s10					;adjust font size
+	Gui, %n%:Margin, 20
+	Gui, %n%:Add, Edit, c333333 Border Center x%px% y%py% w%w% h%h% gDoNothing v%xid%_up hwnd%xid%_up_hwnd, %lbl%
+	GuiControl, %n%:Hide, %xid%_up
+	;.......................................................................................
+}
+;--------------------------------------------------------------------
 ;#################################################################################
 
 ;#################################################################################
@@ -101,6 +125,7 @@ GuiKeyboard_MouseMove()
 {
 	;............................................................................
 	global guikeyboard_lastkey
+	global XpressTyperOn
 	;............................................................................
 	
 	;............................................................................
@@ -115,9 +140,23 @@ GuiKeyboard_MouseMove()
 	;in case the last hovered key changed, reset its color
 	if(guikeyboard_lastkey!=idbt)
 	{
-		;change the old button font color to default
-		GuiControl, %A_Gui%:+cffffff +Redraw, %guikeyboard_lastkey%_dn
+		changeOld:=true
 		
+		if(guikeyboard_lastkey="keybtyper")
+		{
+			;typer button acts according to XpressTyperOn boolean
+			if(XpressTyperOn)
+			{
+				changeOld:=false
+			}
+		}
+		
+		if(changeOld)
+		{
+			;change the old button font color to default
+			GuiControl, %A_Gui%:+cffffff +Redraw, %guikeyboard_lastkey%_dn
+		}
+			
 		;if the button was hidden, hide it again
 		if(!GuiKeyboard_checkBt(guikeyboard_lastkey))
 		{
@@ -217,6 +256,11 @@ GuiKeyboard_action(idbt)
 	;............................................................................
 	
 	;............................................................................
+	global XpressTyperOn	;stores if typer is active or not
+	global XpressTyperTxt	;stores typed text
+	;............................................................................
+	
+	;............................................................................
 	Gui_focus()			;focus on the target window
 	;............................................................................
 	
@@ -236,6 +280,7 @@ GuiKeyboard_action(idbt)
 			{
 				Guikeyboard_refresh(A_Gui,"lo")
 			}
+		return
 		;--------------------------
 		;--------------------------
 		;Shift button changes from low caps to high caps once only, then returns to low
@@ -248,6 +293,7 @@ GuiKeyboard_action(idbt)
 			{
 				Guikeyboard_refresh(A_Gui,"lo")
 			}
+		return
 		;--------------------------
 		;--------------------------
 		;Symbol button changes from low caps to symbols and vice-versa
@@ -260,7 +306,27 @@ GuiKeyboard_action(idbt)
 			{
 				Guikeyboard_refresh(A_Gui,"sy")
 			}
+		return
 		;--------------------------
+		;--------------------------
+		;Typer activates/deactivates the express typer box
+		case "Typer":
+			XpressTyperOn:=!XpressTyperOn
+			if(XpressTyperOn)
+			{
+				;show typer text
+				GuiControl, %A_Gui%:Show, typertxt_up
+				;erase text inside
+				GuiControl, %A_Gui%:Text, typertxt_up ,
+			}
+			else
+			{
+				;hide typer text
+				GuiControl, %A_Gui%:Hide, typertxt_up
+			}
+		return
+		;--------------------------
+		
 		;--------------------------
 		;all of the other buttons
 		default:
@@ -275,7 +341,18 @@ GuiKeyboard_action(idbt)
 					StringTrimLeft, nval, xval, 1
 					SendInput ^!{%nval%}
 				default:								;plain key
-					SendInput {%xval%}
+					if(XpressTyperOn)
+					{
+						global guiKeyboard_id
+						ControlSend, Edit1, {%xval%}, ahk_id %guiKeyboard_id%
+						
+						;store the edit box text in a variable
+						ControlGetText, XpressTyperTxt, Edit1, ahk_id %guiKeyboard_id%
+					}
+					else
+					{
+						SendInput {%xval%}
+					}
 			}
 			
 			;if keyboard mode is temporary high, just turn it down to low
@@ -284,6 +361,7 @@ GuiKeyboard_action(idbt)
 			{
 				GuiKeyboard_refresh(A_Gui,"lo")
 			}
+		return
 		;--------------------------
 	}
 	;............................................................................
@@ -432,14 +510,6 @@ GuiKeyboard_checkBt(idbt)
 GuiKeyboard_show(n){
 
 	Gui, %n%:Show,
-	
-	/*
-	gui_w:=580			;width
-	gui_h:=240			;Height
-	gui_posy:= A_ScreenHeight-gui_h	;vertical position for the Gui
-	
-	Gui, %n%:Show, xCenter y%gui_posy%
-	*/
 		
 	return
 }
@@ -482,6 +552,8 @@ GuiKeyboardDrag_on()
 		guikeyboard_dragy:=py-guiy				;offset y position
 	}
 	;............................................................................
+	
+	return
 }
 ;---------------------------------------------------------------------------------
 ;---------------------------------------------------------------------------------
@@ -506,6 +578,8 @@ GuiKeyboardDrag_do()
 		WinMove, newx,newy					;move the gui window
 	}
 	;............................................................................
+	
+	return
 }
 ;---------------------------------------------------------------------------------
 ;---------------------------------------------------------------------------------
@@ -528,6 +602,24 @@ GuiKeyboardDrag_off()
 		guikeyboard_dragy:=0
 	}
 	;............................................................................
+	
+	return
+}
+;---------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------
+;transfers typer text into the active window text area
+;---------------------------------------------------------------------------------
+GuiKeyboardTyper_inject()
+{
+	global XpressTyperTxt	;text to type
+	
+	;.............................................................................
+	;send it raw into the targeted window
+	SendRaw %XpressTyperTxt%
+	;.............................................................................
+	
+	return
 }
 ;---------------------------------------------------------------------------------
 ;#################################################################################
