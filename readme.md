@@ -3,16 +3,16 @@
 
 Made by Alexandre Rodrigues Lopes [http://alexcrafter.blogspot.com/](http://alexcrafter.blogspot.com/)
 
-version 3.0
+version 5.0, 2020
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 #
 # Intro
 
 Hello mates!
 
-This autohotkey script creates a handy Gui with graphic buttons that simulate the most used actions in any art software.
+This autohotkey script creates a handy virtual keyboard with shortcuts for any graphics editing software.
 
 It was made with the purpose of reducing the need of a keyboard when working with digital tablets.
 
@@ -25,8 +25,7 @@ You just have to match your specific software shortcuts for these actions with t
 
 Make sure you have [AutoHotkey](https://www.autohotkey.com/) installed for Windows.
 
-Download this repository, and run `xpresskeys.ahk`. Trigger the GUI by pressing the `+` on your keyboard's numpad (NumpadPlus).
-
+Download this repository, install the XpressKeys.ttf font, and run `xpresskeys.ahk`. Trigger the GUI by pressing the `+` on your keyboard's numpad (NumpadPlus).
 #
 # Extras
 
@@ -36,40 +35,36 @@ It includes some compound keys, like accent and tilde effects on vowels, for lat
 
 The codes were developed from a QWERTY European Portuguese keyboard, so, if you need different symbols, you'll have to use the "key history panel" of Autohotkey to get your correct key codes.
 
-The Xpress Typer was added - See `Changelog` for version 3.0
+The Xpress Typer button gives an extra option: it will inject the virtual keyboard strikes into a personal text box, and while this box is active, you can force-retype it into any place by pressing the middle-mouse button.
+Do not forget to deactivate the Xpress Typer button when not needed, or any press of the middle-mouse button will retrigger the macro.
+This was created since changing focus between the GUI and other windows made it impossible to edit certain text, like renaming a file, or changing the name of a layer.
 
 #
 # Customization
 
-`xpresskeys_tooltips_uk.txt` - Has all the labels in english for each button. You can change these, add more, or even make your own file with another language.
-
-Just don't forget to change the line
+Everything was simplified.
+`xpresskeys_keyboard_vars.txt` - If you have more buttons to add, just access this file. At the end, under `xpress keys`, you can add your custom buttons.
+Positioning is based on a reference, so just access the image `keyboard1-map.jpg` to know where you want the button.
 ```
-#Include xpresskeys_tooltips_uk.txt
 ```
-in the script `xpresskeys.ahk`
-
-`xpresskeys_actions.txt` - Here you can change/add more button actions. The button id MUST match one created in the file `xpresskeys_buttons.txt`
-
-So, if you add another button with the id `btfoo`:
+`xpresskeys_keyboard_map.txt` - This file stores the position and size of each button. At the start, there's definitions for the gui itself, and the Express Typer box.
 ```
-AddImgButton(n,175,80,50,50,"btfoo","bt_foo_up.png","bt_foo_on.png","bt_foo_dn.png")
 ```
-in the file `xpresskeys_buttons.txt`
-just add another case for it in the file `xpresskeys_actions.txt`
-like this:
-```
-	Case "btfoo":
-	Gui_hide(A_Gui)	;hide the gui on mouse click
-	SendInput {d}	;The shortcut sent to the art window (must match that program's shortcut key)
-```
-NOTE: you will need three png images for the button, with up/over/down states, place them inside the "images" folder, and properly add their filenames to the command line.
-(in this case; `"bt_foo_up.png","bt_foo_on.png","bt_foo_dn.png"`)
-
-`xpresskeys_keyboard_vars.txt` - Has all the codes used for the virtual keyboard.
+`xpresskeys_keyboard_macros.txt` - This file manages overides for mouse buttons and other keys. It works in conjunction with
+`xpresskeys_customhotkeys.txt` to change behaviour according to different softwares. It actually has overrides for Adobe Ilustrator, changing middle mouse button for drag, and mouse wheel for zoom in/zoom out.
 
 #
 # Changelog
+
+## version 5.0
+Total remake.
+Eliminated the circular GUI and added the express buttons to the keyboard. Everything works neatly now.
+Extras:
+A button to open window navigation (Alt-Tab) - because doing it without a real keyboard was... ugh.
+A button to take cute Snapshots. Just look for them in the images/screen capture folder. (Win+Printscreen)
+
+## version 4.0
+Drowned in a lot of stuff that I didn't care to write down. XD
 
 ## version 3.0
 Some applications, as well as the windows explorer, will immediately close a text input when focus is lost. This makes using the express keyboard useless when trying to type text in there, or simple things like changing a file's name or editing a layer's name in photoshop.
